@@ -3,7 +3,8 @@ const router = require('express').Router();
 const cubeManager = require('../managers/cubeManager');
 const accessoryManager = require('../managers/accessoryManager');
 
-router.get('/create', (req, res) => {
+router.get('/create', (req, res) => { 
+    console.log(req.user) ;
     res.render('create');
 });
 
