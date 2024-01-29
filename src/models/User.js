@@ -2,22 +2,35 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
-    username: String,
+    username: {
+        type: String,
+        required: [true, 'Username is required'],
+        minLength: [5, 'Password is too short!'],
+        match: [/^[A-Za-z0-9]+$/, 'Username must be alphanumeric'],
+        unique: {
+            value: true,
+            message: 'Username already exists',
+        },
+    },
     password: {
         type: String,
-        // validate: {
-        //     validator: function (value) {
-        //         return this.repeatPassword === value;
-        //     },
-        //     message: "Passwords dont match!"
-        // }
-    }
+        required: [true, 'Password is required'],
+        validate: {
+            validator: function(value) {
+                return /^[A-Za-z0-9]+$/.test(value);
+            },
+            message: `Invalid password characters!`
+        },
+        minLength: 8,
+    },
 });
 
+
+
 userSchema.virtual('repeatPassword')
-    .set(function(value){
-        if(value !== this.password){
-            throw new mongoose.MongooseError('Password missmatch!');
+    .set(function(value) {
+        if (value !== this.password) {
+            throw new Error('Passsword missmatch!');
         }
     });
 
