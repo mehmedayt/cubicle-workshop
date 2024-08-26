@@ -2,7 +2,7 @@
 
 ## :pencil2: About The Project
 
-This is my project for the JS-Web course in SoftUni. It was crated with HTML, CSS, JavaScript, Express and Mongoose. It for users easly Buy and Sale cubes. You have profile page with specific information for you. Have real time contact with owner, you can send email with SenGgrid.
+This is my project for the JS-Web course in SoftUni. It was crated with HTML, CSS, JavaScript, Express and Mongoose. It for users easly Buy and Sale cubes. You have profile page with specific information for you.
 
 <br/>
 
